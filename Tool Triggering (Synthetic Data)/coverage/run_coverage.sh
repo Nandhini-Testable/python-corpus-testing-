@@ -18,7 +18,9 @@ require_smoke "coverage" "coverage==7.16.0" "$PYBIN" -m coverage --version
 mkdir -p "$ROOT/reports"
 cd "$ROOT"
 
-"$PYBIN" -m coverage run -m pytest -q && "$PYBIN" -m coverage xml -o reports/coverage.xml && "$PYBIN" -m coverage report
+"$PYBIN" -m coverage run --branch --source=packages,services,language -m pytest -q \
+  && "$PYBIN" -m coverage xml -o reports/coverage.xml \
+  && "$PYBIN" -m coverage report
 rc=$?
 accept_findings "coverage" "$rc" "reports/coverage.xml"
 exit $?

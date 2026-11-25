@@ -75,3 +75,10 @@ package-dir = {"" = "packages/domain/src"}
 
 [tool.setuptools.packages.find]
 where = ["packages/domain/src"]
+
+[tool.coverage.run]
+branch = true
+source = ["packages", "services", "language"]
+
+[tool.coverage.report]
+skip_empty = true
